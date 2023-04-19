@@ -2,12 +2,16 @@ import java.util.Scanner;
 public class ConsoleExercise {
     public static void main (String [] args){
         double pi = 3.14159;
-    System.out.println("The value of pi is approximately " + pi);
+    System.out.printf("The value of pi is approximately %.2f", pi);
+
+
 // enter an integer
     Scanner scanner = new Scanner(System.in);
         System.out.print("Enter an integer: ");
         int userInput = scanner.nextInt();
         System.out.println("You entered: " + userInput);
+
+
 
 // have user enter 3 words
 
