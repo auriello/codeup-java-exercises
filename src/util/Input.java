@@ -3,7 +3,7 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner;
+    private static Scanner scanner;
 
     public Input() {
         scanner = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class Input {
         return (input.equals("y") || input.equals("yes"));
     }
 
-    public int getInt(int min, int max) {
+    public static int getInt(int min, int max) {
         int input = getInt();
         while (input < min || input > max) {
             System.out.printf("Please enter a number between %d and %d: ", min, max);
@@ -27,7 +27,7 @@ public class Input {
         return input;
     }
 
-    public int getInt() {
+    public static int getInt() {
         int input = 0;
         boolean isValidInput = false;
         while (!isValidInput) {
@@ -62,6 +62,7 @@ public class Input {
             }
         }
         return input;
-    }
-}
+    }}
+
+
 
