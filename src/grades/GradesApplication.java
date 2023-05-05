@@ -3,6 +3,7 @@ package grades;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.*;
 
 public class GradesApplication {
 
@@ -131,6 +132,62 @@ public class GradesApplication {
             return null;
         }
     }
+
+
+
+    public class GroceryList {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+
+            // Prompt the user if they would like to create a grocery list
+            System.out.print("Would you like to create a grocery list? (y/n): ");
+            String response = input.nextLine().trim().toLowerCase();
+
+            // Create a map to store the grocery list
+            Map<String, Map<String, Integer>> groceryList = new TreeMap<>();
+
+            // Continue to prompt the user for items if they want to create a list
+            while (response.equals("y")) {
+                // Prompt the user if they would like to enter a new item
+                System.out.print("Would you like to enter a new item? (y/n): ");
+                response = input.nextLine().trim().toLowerCase();
+
+                // If the user wants to enter a new item
+                if (response.equals("y")) {
+                    // Prompt the user for the category
+                    System.out.println("Enter the category:");
+                    String category = input.nextLine().trim().toLowerCase();
+
+                    // Prompt the user for the item name
+                    System.out.println("Enter the name of the item:");
+                    String item = input.nextLine().trim().toLowerCase();
+
+                    // Prompt the user for the item quantity
+                    System.out.println("Enter how many of the item:");
+                    int quantity = input.nextInt();
+
+                    // Add the item to the grocery list
+                    Map<String, Integer> categoryMap = groceryList.getOrDefault(category, new TreeMap<>());
+                    categoryMap.put(item, quantity);
+                    groceryList.put(category, categoryMap);
+
+                    // Consume the newline character
+                    input.nextLine();
+                }
+            }
+
+            // Display the final grocery list
+            System.out.println("\nYour grocery list:");
+            for (String category : groceryList.keySet()) {
+                System.out.println(category.toUpperCase() + ":");
+                for (String item : groceryList.get(category).keySet()) {
+                    int quantity = groceryList.get(category).get(item);
+                    System.out.println("- " + item + " (" + quantity + ")");
+                }
+            }
+        }
+    }
+
 
 }
 
